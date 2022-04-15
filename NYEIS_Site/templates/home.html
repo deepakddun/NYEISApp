@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+        {% for child in children %}
+            <h1>{{child.first}} {{child.last}}</h1>
+                {{child.address}}
+                {{child.dob}}
+        {% endfor %}
+    {% endblock content %}
