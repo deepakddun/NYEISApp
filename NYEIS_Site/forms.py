@@ -1,6 +1,8 @@
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField, DateField, EmailField, SelectField ,SubmitField
+import datetime
 
+from flask_wtf import FlaskForm
+from wtforms.fields import StringField, DateField, EmailField, SelectField, SubmitField
+from datetime import date
 from wtforms.validators import DataRequired, Length, Email, ValidationError
 
 STATES_TUPLE = [("AL", "Alabama"), ("AK", "Alaska"), ("AZ", "Arizona"), ("AR", "Arkansas"), ("CA", "California"),
@@ -28,15 +30,21 @@ def type_check(form, field):
         raise ValidationError('Can contain only numbers')
 
 
+def date_check(form, field):
+    val:date  = field.data
+    if val > date.today():
+        raise ValidationError("Date cannot be greater than today's date")
+
+
 class IntakeForm(FlaskForm):
     child_firstname = StringField("Child First Name", validators=[DataRequired()])
     child_middlename = StringField("Child Middle Name", validators=[DataRequired()])
     child_lastname = StringField("Child Last Name", validators=[DataRequired()])
-    child_dob = DateField("Date Of Birth", validators=[DataRequired()])
+    child_dob = DateField("Date Of Birth", validators=[DataRequired() , date_check], default=date.today)
     father_name = StringField("Father Name")
-    father_dob = DateField("Father's Date Of Birth")
+    father_dob = DateField("Father's Date Of Birth", default=date.today ,validators=[date_check])
     mother_name = StringField("Mother Name")
-    mother_dob = DateField("Mother's Date Of Birth")
+    mother_dob = DateField("Mother's Date Of Birth", default=date.today , validators=[date_check])
     save_form = SubmitField('Save')
 
 
@@ -47,8 +55,8 @@ class ContactForm(FlaskForm):
 
 
 class AddressForm(FlaskForm):
-    address_line1 = StringField('Area Code', validators=[DataRequired(), Length(min=1, max=3)])
-    address_line2 = StringField('Area Code', validators=[Length(min=1, max=3)])
-    address_city = StringField('Area Code', validators=[DataRequired(), Length(min=1, max=3)])
+    address_line1 = StringField('Address Line 1', validators=[DataRequired(), Length(min=1, max=3)])
+    address_line2 = StringField('Address Line 2', validators=[Length(min=1, max=3)])
+    address_city = StringField('City', validators=[DataRequired(), Length(min=1, max=3)])
     address_state = SelectField('State', choices=STATES_TUPLE, validators=[DataRequired()])
     address_zip = StringField('Zip', validators=[type_check, Length(max=5)])

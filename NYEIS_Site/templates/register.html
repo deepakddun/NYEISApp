@@ -5,84 +5,218 @@
     <div class="container border-top my-1 py-2">
         <div class="row">
             <div class="col-sm">
+                {% if intakef.child_firstname.errors %}
                 {{ intakef.child_firstname.label()}}
                 {{ intakef.child_firstname(class="form-control")}}
+
+                        {% for error in intakef.child_firstname.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ intakef.child_firstname.label()}}
+                    {{ intakef.child_firstname(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
-                {{ intakef.child_middlename.label()}}
-                {{ intakef.child_middlename(class="form-control")}}
+                {% if intakef.child_middlename.errors %}
+                    {{ intakef.child_middlename.label()}}
+                     {{ intakef.child_middlename(class="form-control")}}
+                         {% for error in intakef.child_middlename.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                         {% endfor %}
+                {% else %}
+                    {{ intakef.child_middlename.label()}}
+                    {{ intakef.child_middlename(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
+                {% if intakef.child_lastname.errors %}
                 {{ intakef.child_lastname.label()}}
-                {{ intakef.child_lastname(class="form-control")}}
+                 {{ intakef.child_lastname(class="form-control")}}
+                        {% for error in intakef.child_lastname.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ intakef.child_lastname.label()}}
+                    {{ intakef.child_lastname(class="form-control")}}
+                {% endif %}
             </div>
         </div>
         <div class="row py-2">
             <div class="col-6 col-md-4">
-                {{ intakef.child_dob.label()}}
-                {{ intakef.child_dob(class="form-control")}}
+                {% if intakef.child_dob.errors %}
+                 {{ intakef.child_dob.label()}}
+                 {{ intakef.child_dob(class="form-control")}}
+                        {% for error in intakef.child_dob.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ intakef.child_dob.label()}}
+                    {{ intakef.child_dob(class="form-control")}}
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="container border-top my-3 py-3">
         <div class="row">
             <div class="col-sm">
-                {{ intakef.father_name.label()}}
-                {{ intakef.father_name(class="form-control")}}
+                 {% if intakef.father_name.errors %}
+                 {{ intakef.father_name.label()}}
+                 {{ intakef.father_name(class="form-control")}}
+                        {% for error in intakef.father_name.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ intakef.father_name.label()}}
+                    {{ intakef.father_name(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
-                {{ intakef.father_dob.label()}}
-                {{ intakef.father_dob(class="form-control")}}
+                 {% if intakef.father_dob.errors %}
+                 {{ intakef.father_dob.label()}}
+                 {{ intakef.father_dob(class="form-control")}}
+                        {% for error in intakef.father_dob.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                {% else %}
+                    {{ intakef.father_dob.label()}}
+                    {{ intakef.father_dob(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
+                {% if intakef.mother_name.errors %}
                 {{ intakef.mother_name.label()}}
                 {{ intakef.mother_name(class="form-control")}}
+                        {% for error in intakef.mother_name.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ intakef.mother_name.label()}}
+                    {{ intakef.mother_name(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
-                {{ intakef.mother_dob.label()}}
-                {{ intakef.mother_dob(class="form-control")}}
+                {% if intakef.mother_dob.errors %}
+                 {{ intakef.mother_dob.label()}}
+                 {{ intakef.mother_dob(class="form-control")}}
+                        {% for error in intakef.mother_dob.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ intakef.mother_dob.label()}}
+                    {{ intakef.mother_dob(class="form-control")}}
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="container border-top my-3 py-3">
         <div class="row">
             <div class="col-sm">
-                {{ contf.ph_areacode.label()}}
-                {{ contf.ph_areacode(class="form-control")}}
+                 {% if  contf.ph_areacode.errors %}
+                 {{  contf.ph_areacode.label()}}
+                 {{  contf.ph_areacode(class="form-control")}}
+                        {% for error in  contf.ph_areacode.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{  contf.ph_areacode.label()}}
+                    {{  contf.ph_areacode(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
-                {{ contf.ph_phonenumber.label()}}
-                {{ contf.ph_phonenumber(class="form-control")}}
+                 {% if  contf.ph_phonenumber.errors %}
+                {{  contf.ph_phonenumber.label()}}
+                {{  contf.ph_phonenumber(class="form-control")}}
+                        {% for error in  contf.ph_phonenumber.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{  contf.ph_phonenumber.label()}}
+                    {{  contf.ph_phonenumber(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
-                {{ contf.email_addr.label()}}
-                {{ contf.email_addr(class="form-control")}}
+                {% if  contf.email_addr.errors %}
+                {{  contf.email_addr.label()}}
+                 {{  contf.email_addr(class="form-control")}}
+                        {% for error in  contf.email_addr.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{  contf.email_addr.label()}}
+                    {{  contf.email_addr(class="form-control")}}
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="container border-top my-3 py-3">
         <div class="row">
             <div class="col-sm">
-                {{ addrf.address_line1.label()}}
-                {{ addrf.address_line1(class="form-control")}}
+                {% if  addrf.address_line1.errors %}
+                 {{  addrf.address_line1.label()}}
+                {{  addrf.address_line1(class="form-control")}}
+                        {% for error in  addrf.address_line1.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                {% else %}
+                    {{  addrf.address_line1.label()}}
+                    {{  addrf.address_line1(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
-                {{ addrf.address_line2.label()}}
-                {{ addrf.address_line2(class="form-control")}}
+                {% if  addrf.address_line2.errors %}
+                  {{  addrf.address_line2.label()}}
+                 {{  addrf.address_line2(class="form-control")}}
+                        {% for error in  addrf.address_line2.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                {% else %}
+                    {{  addrf.address_line2.label()}}
+                    {{  addrf.address_line2(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-sm">
-                {{ addrf.address_city.label()}}
-                {{ addrf.address_city(class="form-control")}}
+                 {% if  addrf.address_city.errors %}
+                 {{  addrf.address_city.label()}}
+                 {{  addrf.address_city(class="form-control")}}
+                        {% for error in  addrf.address_city.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                {% else %}
+                    {{  addrf.address_city.label()}}
+                    {{  addrf.address_city(class="form-control")}}
+                {% endif %}
             </div>
         </div>
         <div class="row py-2">
             <div class="col-6 col-md-4">
-                {{ addrf.address_state.label()}}
-                {{ addrf.address_state(class="form-control")}}
+                {% if  addrf.address_state.errors %}
+                {{  addrf.address_state.label()}}
+                 {{  addrf.address_state(class="form-control")}}
+                        {% for error in  addrf.address_state.errors %}
+                            <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                {% else %}
+                    {{  addrf.address_state.label()}}
+                    {{  addrf.address_state(class="form-control")}}
+                {% endif %}
             </div>
             <div class="col-6 col-md-4">
-                {{ addrf.address_zip.label()}}
-                {{ addrf.address_zip(class="form-control")}}
+                {% if  addrf.address_zip.errors %}
+                 {{  addrf.address_zip.label()}}
+                {{  addrf.address_zip(class="form-control")}}
+                        {% for error in  addrf.address_zip.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{  addrf.address_zip.label()}}
+                    {{  addrf.address_zip(class="form-control")}}
+                {% endif %}
             </div>
         </div>
     </div>
