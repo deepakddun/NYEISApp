@@ -4,20 +4,29 @@
     <div class="accordion" id="accordionExample">
         {% for child in children %}
         <div class="card mb-2">
-            <div class="card-header" id="heading{{child.ref_no}}">
+            <div class="card-header" id="heading{{child.child_ref}}">
                 <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{child.ref_no}}" aria-expanded="true" aria-controls="collapse{{child.ref_no}}">
-                        {{child.ref_no}} - {{child.first}}
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{child.child_ref}}" aria-expanded="true" aria-controls="collapse{{child.child_ref}}">
+                        {{child.child_ref}} - {{child.child_firstname}} {{child.child_middlename}} {{child.child_lastname}}
                     </button>
                 </h2>
             </div>
-            <div id="collapse{{child.ref_no}}" class="collapse" aria-labelledby="heading{{child.ref_no}}" data-parent="#accordionExample">
+            <div id="collapse{{child.child_ref}}" class="collapse" aria-labelledby="heading{{child.child_ref}}" data-parent="#accordionExample">
                 <div class="card-body">
-                   Reference Number :  {{child.ref_no}}
-                   First Name : {{child.first}}
-                   Last Name :  {{child.last}}
-                   Address : {{child.address}}
-                   Date Of Birth : {{child.dob}}
+                   <dl class="row">
+                        <dt class="col-sm-3">Child First Name</dt>
+                        <dd class="col-sm-9">{{ child.child_firstname }}</dd>
+
+                        <dt class="col-sm-3">Child Middle Name</dt>
+                        <dd class="col-sm-9">{{ child.child_middlename }} </dd>
+
+                        <dt class="col-sm-3">Child Last Name</dt>
+                        <dd class="col-sm-9">{{ child.child_lastname }}</dd>
+
+                        <dt class="col-sm-3">Date Of Birth</dt>
+                        <dd class="col-sm-9">{{ child.child_dob }}</dd>
+                   </dl>
+                    <a class="btn btn-primary" href="{{ url_for('child_details',id = child.id)}}" role="button">Details</a>
                 </div>
             </div>
         </div>

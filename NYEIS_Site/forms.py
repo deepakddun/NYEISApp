@@ -1,9 +1,7 @@
-import datetime
-
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, DateField, EmailField, SelectField, SubmitField
+from wtforms.fields import StringField, DateField, EmailField, SelectField, SubmitField, PasswordField
 from datetime import date
-from wtforms.validators import DataRequired, Length, Email, ValidationError
+from wtforms.validators import DataRequired, Length, Email, ValidationError, EqualTo
 
 STATES_TUPLE = [("AL", "Alabama"), ("AK", "Alaska"), ("AZ", "Arizona"), ("AR", "Arkansas"), ("CA", "California"),
                 ("CO", "Colorado"),
@@ -31,20 +29,20 @@ def type_check(form, field):
 
 
 def date_check(form, field):
-    val:date  = field.data
+    val: date = field.data
     if val > date.today():
         raise ValidationError("Date cannot be greater than today's date")
 
 
 class IntakeForm(FlaskForm):
     child_firstname = StringField("Child First Name", validators=[DataRequired()])
-    child_middlename = StringField("Child Middle Name", validators=[DataRequired()])
+    child_middlename = StringField("Child Middle Name")
     child_lastname = StringField("Child Last Name", validators=[DataRequired()])
-    child_dob = DateField("Date Of Birth", validators=[DataRequired() , date_check], default=date.today)
+    child_dob = DateField("Date Of Birth", validators=[DataRequired(), date_check], default=date.today)
     father_name = StringField("Father Name")
-    father_dob = DateField("Father's Date Of Birth", default=date.today ,validators=[date_check])
+    father_dob = DateField("Father's Date Of Birth", default=date.today, validators=[date_check])
     mother_name = StringField("Mother Name")
-    mother_dob = DateField("Mother's Date Of Birth", default=date.today , validators=[date_check])
+    mother_dob = DateField("Mother's Date Of Birth", default=date.today, validators=[date_check])
     save_form = SubmitField('Save')
 
 
@@ -55,8 +53,18 @@ class ContactForm(FlaskForm):
 
 
 class AddressForm(FlaskForm):
-    address_line1 = StringField('Address Line 1', validators=[DataRequired(), Length(min=1, max=3)])
-    address_line2 = StringField('Address Line 2', validators=[Length(min=1, max=3)])
-    address_city = StringField('City', validators=[DataRequired(), Length(min=1, max=3)])
+    address_line1 = StringField('Address Line 1', validators=[DataRequired()])
+    address_line2 = StringField('Address Line 2')
+    address_city = StringField('City', validators=[DataRequired()])
     address_state = SelectField('State', choices=STATES_TUPLE, validators=[DataRequired()])
     address_zip = StringField('Zip', validators=[type_check, Length(max=5)])
+
+
+class UserForm(FlaskForm):
+    firstname = StringField('First Name', validators=[DataRequired()])
+    lastname = StringField('Last Name', validators=[DataRequired()])
+    email_addr = EmailField('Email Address', validators=[DataRequired(),Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password',
+                                     validators=[DataRequired(), EqualTo('password', message='Password must match')])
+    submit = SubmitField('Submit')

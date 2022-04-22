@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="" method="post" novalidate>
+    {{ user_form.csrf_token }}
+    <div class="row">
+        <div class="col-6 my-3">
+            {% if user_form.firstname.errors %}
+                {{ user_form.firstname.label()}}
+                {{ user_form.firstname(class="form-control")}}
+
+                        {% for error in user_form.firstname.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ user_form.firstname.label()}}
+                    {{ user_form.firstname(class="form-control") }}
+                {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mb-3">
+            {% if user_form.lastname.errors %}
+                {{ user_form.lastname.label()}}
+                {{ user_form.lastname(class="form-control")}}
+
+                        {% for error in user_form.lastname.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ user_form.lastname.label()}}
+                    {{ user_form.lastname(class="form-control")}}
+                {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mb-3">
+            {% if user_form.email_addr.errors %}
+                {{ user_form.email_addr.label()}}
+                {{ user_form.email_addr(class="form-control")}}
+
+                        {% for error in user_form.email_addr.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ user_form.email_addr.label()}}
+                    {{ user_form.email_addr(class="form-control")}}
+                {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mb-3">
+            {% if user_form.password.errors %}
+                {{ user_form.password.label()}}
+                {{ user_form.password(class="form-control")}}
+
+                        {% for error in user_form.password.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ user_form.password.label()}}
+                    {{ user_form.password(class="form-control")}}
+                {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mb-3">
+            {% if user_form.confirm_password.errors %}
+                {{ user_form.confirm_password.label()}}
+                {{ user_form.confirm_password(class="form-control")}}
+
+                        {% for error in user_form.confirm_password.errors %}
+                           <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                {% else %}
+                    {{ user_form.confirm_password.label()}}
+                    {{ user_form.confirm_password(class="form-control")}}
+                {% endif %}
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="container">
+             {{user_form.submit(class="btn btn-primary")}}
+        </div>
+    </div>
+</form>
+
+{% endblock content %}

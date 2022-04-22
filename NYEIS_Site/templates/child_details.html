@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card text-center">
+    <div class="card-header">
+        Reference Number - {{ child.child_ref }}<br>
+        Status - {{ child.status }}
+    </div>
+    <div class="card-body">
+                <h5 class="card-title">Child Details</h5>
+                <dl class="row">
+                        <dt class="col-sm-3 text-center">Child First Name</dt>
+                        <dd class="col-sm-9">{{ child.child_firstname }}</dd>
+
+                        <dt class="col-sm-3 text-center">Child Middle Name</dt>
+                        <dd class="col-sm-9">{{ child.child_middlename }} </dd>
+
+                        <dt class="col-sm-3 text-center">Child Last Name</dt>
+                        <dd class="col-sm-9">{{ child.child_lastname }}</dd>
+
+                        <dt class="col-sm-3 text-center">Date of Birth</dt>
+                        <dd class="col-sm-9">{{ child.child_dob }}</dd>
+                </dl>
+                <hr/>
+                <dl class="row">
+                        <dt class="col-sm-3 ">Father Name</dt>
+                        <dd class="col-sm-9">{{ child.father_name }}</dd>
+
+                        <dt class="col-sm-3 ">Father Date Of Birth</dt>
+                        <dd class="col-sm-9">{{ child.father_dob }} </dd>
+
+                        <dt class="col-sm-3">Mother Name</dt>
+                        <dd class="col-sm-9">{{ child.mother_name }}</dd>
+
+                        <dt class="col-sm-3">Mother Date Of Birth</dt>
+                        <dd class="col-sm-9">{{ child.mother_dob }}</dd>
+                </dl>
+                <hr/>
+                <dl class="row">
+                        <dt class="col-sm-3 text-center">Phone Number</dt>
+                        <dd class="col-sm-9">{{ contact.ph_areacode }}-{{contact.ph_phonenumber}}</dd>
+
+                        <dt class="col-sm-3 text-center">Email</dt>
+                        <dd class="col-sm-9">{{ contact.email_addr }} </dd>
+                </dl>
+                <hr/>
+                <dl class="row">
+                        <dt class="col-sm-3 text-center">Address Line 1</dt>
+                        <dd class="col-sm-9">{{ child.addresses.address_line1 }}</dd>
+
+                        <dt class="col-sm-3 text-center">Address Line 2</dt>
+                        <dd class="col-sm-9">{{ address.address_line2 }} </dd>
+
+                        <dt class="col-sm-3 text-center">City</dt>
+                        <dd class="col-sm-9">{{ address.address_city }}</dd>
+
+                        <dt class="col-sm-3 text-center">State</dt>
+                        <dd class="col-sm-9">{{ address.address_state }}</dd>
+
+                        <dt class="col-sm-3 text-center">Zip</dt>
+                        <dd class="col-sm-9">{{ address.address_zip }}</dd>
+
+               </dl>
+        </div>
+</div>
+<div class="my-3" id="container-fluid">
+
+            <a class="btn btn-primary " href="#" role="button">Edit</a>
+
+
+            <a class="btn btn-primary " href="{{ url_for('child_submit_approval' , id=child.id) }}" role="button">Submit For Approval</a>
+
+
+           <a class="btn btn-primary " href="#" role="button">Delete</a>
+
+        <a class="btn btn-primary " href="{{ url_for('home') }}" role="button">Back</a>
+
+
+
+</div>
+
+
+
+{% endblock content %}

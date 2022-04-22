@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card text-center">
+    <div class="card-header">
+        Registration Complete
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Child Reference Number - {{ ref_no }}</h5>
+         <dl class="row">
+                        <dt class="col-sm-3">Child First Name</dt>
+                        <dd class="col-sm-9">{{ first_name }}</dd>
+
+                        <dt class="col-sm-3">Child Middle Name</dt>
+                        <dd class="col-sm-9">{{ middle_name }} </dd>
+
+                        <dt class="col-sm-3">Child Last Name</dt>
+                        <dd class="col-sm-9">{{ last_name }}</dd>
+
+         </dl>
+        <a href="{{ url_for('home')}}" class="btn btn-primary">Okay</a>
+    </div>
+    <div class="card-footer text-muted">
+        Registration Date : {{ regis_date }}
+    </div>
+</div>
+
+{% endblock content %}
